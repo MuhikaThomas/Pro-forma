@@ -1,0 +1,519 @@
+<Tabs>:
+	orinetation: 'vertical'
+#	size_hint: .5, .5
+	pos_hint: {'center_x': .5, 'center_y': .5}
+	do_default_tab: False
+#*****************************************************	
+	TabbedPanelItem:
+		text: 'Property Info.'
+		ScrollView:
+			size_hint:(None, None)
+			size: (500, 2000)
+			pos_hint: {'center_x':.5,'center_y':.5}
+			GridLayout:
+				cols: 2
+				rows: 10
+				padding: 10
+				spacing: 10
+				height: self.minimum_height
+				do_scroll_x: False
+				do_scroll_y: True
+				Label: 
+					id: property_name_lbl
+					text: 'Property Name:'
+					size_hint_y: 0.1
+					text_size: self.width-20, self.height-20
+					halign: 'left'
+					valign: 'middle'
+				TextInput:
+					id: property_name_ti
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: property_adress_lbl
+					text: 'Property Address:'
+					font_size: 15
+					text_size: self.width-20, self.height-20
+					halign: 'left'
+					valign: 'middle'
+				TextInput:
+					id: property_adress_ti
+					font_size: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: property_area_lbl
+					text: 'Town/City:'
+					font_size: 15
+					text_size: self.width-20, self.height-20
+					halign: 'left'
+					valign: 'middle'
+				TextInput:
+					id: property_area_ti
+					font_size: 15
+					height: 70
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: asking_price_lbl
+					text: 'Asking Price:'
+					font_size: 15
+					text_size: self.width-20, self.height-20
+					halign: 'left'
+					valign: 'middle'
+				TextInput:
+					id: asking_price_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: total_units_lbl
+					text: 'Total Units:'
+					font_size: 15
+					text_size: self.width-20, self.height-20
+					halign: 'left'
+					valign: 'middle'
+				TextInput:
+					id: total_units_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: square_footage_lbl
+					text: 'Total sq footage:'
+					font_size: 15
+					text_size: self.width-20, self.height-20
+					halign: 'left'
+					valign: 'middle'
+				TextInput:
+					id: square_footage_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+#********************************************************************
+				Label:
+					id: drop_down_lbl
+					text: 'Unit Mix'
+					font_size: 20
+					halign: 'left'
+				Label:
+					id: drop_down_lbl
+					text: 'Unit Mix'
+					font_size: 20
+					halign: 'left'
+#********************************************************************
+				Label:
+					id: unit_no_lbl
+					text: 'Number of Units:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id: unit_no_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: unit_type_lbl
+					text: 'Type of Unit:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id: unit_type_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: square_feet_lbl
+					text: 'Square footage:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id: square_feet_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: rent_lbl
+					text: 'Rental Income:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:rent_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+#*****************************************************	
+				Label:
+					id: accounting_lbl
+					text: 'Accounting cost:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:accounting_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: advert_lbl
+					text: 'Advertising cost:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:advert_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: bank_lbl
+					text: 'Banking Charges:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:bank_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: electricity_lbl
+					text: 'Electricity Charges:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:electricity_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: gas_lbl
+					text: 'Fuel Charges:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:gas_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: HOA_lbl
+					text: '(HOA)Home Owner Association Charges:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:HOA_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: hazard_insurance_lbl
+					text: 'Hazard Insurance:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:hazard_insurance_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: mortagage_insurance_lbl
+					text: 'Motgage Insurance:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:mortgage_insurance_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: landscape_maint_lbl
+					text: 'Landscape Maintanance:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:landscape_maint_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: legal_lbl
+					text: 'Legal Fee:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:legal_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: handyman_maint_lbl
+					text: 'Other Maintanance Costs:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:handyman_maint_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: management_lbl
+					text: 'Management Cost:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:management_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: Miscellaneous_lbl
+					text: 'Miscellaneous:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:miscellaneous_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: permits_lbl
+					text: 'Oparation Permits:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:permits_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: pest_lbl
+					text: 'Pest Control:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:pest_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: phone_lbl
+					text: 'Phone Charges:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:pest_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: shipping_lbl
+					text: 'Shipping Charges:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:shipping_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: commisions_lbl
+					text: 'Commissions:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:commisions_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: supplies_lbl
+					text: 'Supply costs:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:supplies_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: tax_lbl
+					text: 'Property Tax:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:tax_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: trash_Pick_lbl
+					text: 'Trash Pickups:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:trash_pick_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: warranty_lbl
+					text: 'Warranty Costs:'
+					font_size: 15
+					halign: 'left'
+				TextInput:
+					id:warranty_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+#*****************************************************	
+				Label:
+					id: purchase_price_lbl
+					text: 'Purchase Price:'
+					font_size: 15
+				TextInput:
+					id: purchase_price_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: down_pay_lbl
+					text: 'Down Payment:'
+					font_size: 15
+				TextInput:
+					id: down_pay_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: settlement_fees_lbl
+					text: 'Settlement Fees:'
+					font_size: 15
+				TextInput:
+					id: settlement_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: closing_cost_lbl
+					text: 'Closing Costs and miscellaneous:'
+					font_size: 15
+				TextInput:
+					id: closing_cost_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: loan_lbl
+					text: 'Loan Amount:'
+					font_size: 15
+				TextInput:
+					id: loan_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: period_lbl
+					text: 'Loan Period:'
+					font_size: 15
+				TextInput:
+					id: period_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: interest_lbl
+					text: 'Interest Rate:'
+					font_size: 15
+				TextInput:
+					id: interest_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+				Label:
+					id: pay_lbl
+					text: 'Monthly Payment:'
+					font_size: 15
+				TextInput:
+					id: pay_ti
+					font_size: 15
+					height: 15
+					text: 'Data collection'
+					focus: True
+					multiline: False
+#*****************************************************	
+	TabbedPanelItem:
+		text: 'Report'
+

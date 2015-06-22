@@ -1,0 +1,20 @@
+import kivy
+
+from kivy.app import App
+from kivy.uix.tabbedpanel import TabbedPanel
+from kivy.uix.tabbedpanel import TabbedPanelHeader
+from kivy.uix.scrollview import ScrollView
+from kivy.lang import Builder
+
+class Tabs(TabbedPanel):
+		def build(ScrollView):
+			root = ScrollView(size_hint=(None, None), size=(400, 400), pos_hint={'center_x':.5,'center_y':.5})
+			root.add_widget(layout)
+			return root
+
+class Estate(App):
+	def build(self):
+		return Tabs()
+
+if __name__ == '__main__':
+	Estate().run()
