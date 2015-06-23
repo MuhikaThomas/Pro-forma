@@ -7,7 +7,9 @@
 	TabbedPanelItem:
 		text: 'Property Info.'
 		ScrollView:
-			size: self.size
+			size_hint:(None, None)
+			size: (500, 2000)
+			pos_hint: {'center_x':.5,'center_y':.5}
 			GridLayout:
 				cols: 2
 				padding: 10
