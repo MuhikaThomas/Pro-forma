@@ -1,0 +1,8 @@
+<Tabs>
+	orientation: 'vertical'
+	size_hint: .5, 1
+	pos_hint: {'center_x': .5, 'center_y': .5}
+	do_default_tab: False
+	GridLayout:
+		rows: 1
+		cols:2
