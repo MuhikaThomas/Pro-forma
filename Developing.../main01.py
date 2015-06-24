@@ -12,13 +12,18 @@ from kivy.lang import Builder
 
 class Layout(GridLayout):
 	pass
-class Tabs(TabbedPanel):
-	def 
-	
 
-class Estate(App):
+class Proforma(App):
 	def build(self):
-		return Tabs()
+		tp_panel = TabbedPanel()
+		
+		th_tab1 = TabbedPanelHeader(text = 'Pro-Forma')
+		th_tab1.content =  Label(text= 'Property Name')
+		th_tab1.content = TextInput()
+
+		tp_panel.add_widget(th_tab1)
+		layout = GridLayout(cols = 2, rows = 1)
+		return tp_panel	
 
 if __name__ == '__main__':
-	Estate().run()
+	Proforma().run()
