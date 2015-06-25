@@ -17,7 +17,6 @@
 					cols: 2
 					padding: 10
 					spacing: 10
-					height: self.minimum_height
 					do_scroll_x: False
 					do_scroll_y: True
 					Label: 

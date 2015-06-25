@@ -1,6 +1,7 @@
 import kivy
 
 from kivy.app import App
+from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.tabbedpanel import TabbedPanelHeader
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.scrollview import ScrollView
@@ -10,16 +11,37 @@ from kivy.uix.dropdown import DropDown
 from kivy.uix.label import Label
 from kivy.lang import Builder
 
+Builder.load_string("""
+<Layout>
+	cols:5
+	rows:2
+""")
+class Layout(GridLayout):
+	pass
 class Proforma(App):
 	def build(self):
 		tp_panel = TabbedPanel()
+		layout = GridLayout(cols = 2, spacing = 10, size_hint_y=None)
+		layout.bind(minimum_height=layout.setter('height'))
+		root = ScrollView(size_hint=(None, None), size=(400, 400), pos_hint={'center_x':.5,'center_y':.5})
 		
+	#***********************************TAB1***************************************	
 		th_tab1 = TabbedPanelHeader(text = 'Pro-Forma')
-		th_tab1.content =  Label(text= 'Property Name')
-		th_tab1.content = TextInput()
-
+		th_tab1.content =  Label(text= 'Property Name', font_size='20sp')
+		th_tab1.content = TextInput(text='input', font_size=15, halign ='left', valign='middle')
+	#***********************************TAB2***************************************
+		th_tab2 = TabbedPanelHeader(text = 'Info. Tab')
+	#***********************************TAB3***************************************
+		th_tab3 = TabbedPanelHeader(text = 'Due Deligence')
+	#***********************************TAB4***************************************
+		th_tab4 = TabbedPanelHeader(text = 'Saved Reports')
+	#***********************************CALLING WIDGETS****************************
+		tp_panel.add_widget(layout)
+		tp_panel.add_widget(root)
 		tp_panel.add_widget(th_tab1)
-		layout = GridLayout(cols = 2, rows = 1)
+		tp_panel.add_widget(th_tab2)
+		tp_panel.add_widget(th_tab3)
+		tp_panel.add_widget(th_tab4)
 		return tp_panel	
 
 if __name__ == '__main__':

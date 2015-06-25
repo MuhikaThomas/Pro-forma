@@ -42,7 +42,7 @@ class Proforma(App):
 	#*******ADDING-CONTENTS-OF-ROOT-WIDGET*******
 		layout.add_widget(layoutTop)
 		layout.add_widget(layoutMid)
-	#*******CALLING-THE-ROOT-WIDGET*******	
+		
 		return layout
 
 if __name__ == '__main__':
