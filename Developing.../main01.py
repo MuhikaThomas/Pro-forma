@@ -17,20 +17,43 @@ Builder.load_string("""
 class Proforma(App):
 	def build(self):
 	#*******ROOTWIDGET*******
-		layout = GridLayout(rows=2)
+		layout = GridLayout(rows=2, row_default_height=10)
 	#*******SUB-WIDGETS*******
 		layoutTop = FloatLayout()#SUB-WIDGET-1
 		layoutMid = FloatLayout()#SUB-WIDGET-2
 	#*******CONTENT-OF-SUB-WIDGET-1*******	
-		title = Label(text = 'Pro-Forma App', font_size = '40sp', pos = (0,280))
+		title = Label(text = 'Pro-Forma App', font_size = '20sp', pos = (0,300))
 	#*******CONTENT-OF-SUB-WIDGET-2*******
-		tp_panel = TabbedPanel()		
+		tp_panel = TabbedPanel()
+		tp_panel.default_tab_text = "Login Tab"	
+		#*******TAB1*******	
 		th_tab1 = TabbedPanelHeader(text = 'Pro-Forma')
-		th_tab1.content =  Label(text= 'Property Name', font_size='20sp')
-		th_tab1.content = TextInput(text='input', font_size=15, halign ='left', valign='middle')
+		#*******LAYOUT-FOR-TAB1*******
+		layouttab1 = GridLayout(cols=2, pos_hint ={'center_x': .5, 'center_y': .5})
+		layouttab1.add_widget(Label(text= 'Property Name', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
+		layouttab1.add_widget(Label(text= 'Property Address', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
+		layouttab1.add_widget(Label(text= 'Town/City', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
+		layouttab1.add_widget(Label(text= 'Asking Price', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
+		layouttab1.add_widget(Label(text= 'Total Units', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
+		layouttab1.add_widget(Label(text= 'Square Footage', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
+		#*******CALLING-LAYOUTTAB1-IN-TAB1*******
+		th_tab1.content = layouttab1
+		
+		#___*******TAB2*******___#
 		th_tab2 = TabbedPanelHeader(text = 'Info. Tab')
+	 	
+		#___*******TAB3*******___#
 		th_tab3 = TabbedPanelHeader(text = 'Due Deligence')
+		
+		#___*******TAB4*******___#
 		th_tab4 = TabbedPanelHeader(text = 'Saved Reports')
+		
 	#*******CALLING-TABS-TO-tp_panel*******
 		tp_panel.add_widget(th_tab1)
 		tp_panel.add_widget(th_tab2)
