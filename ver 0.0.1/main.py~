@@ -58,7 +58,7 @@ class Proforma(App):
 		tp_panel.add_widget(th_tab1)
 		tp_panel.add_widget(th_tab2)
 		tp_panel.add_widget(th_tab3)
-		tp_panel.add_widget(th_tab4)	
+		tp_panel.add_widget(th_tab4)
 	#*******ADDING-CONTENTS-OF-SUB-WIDGETS*******
 		layoutTop.add_widget(title)
 		layoutMid.add_widget(tp_panel)
