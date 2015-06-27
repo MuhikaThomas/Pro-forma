@@ -33,8 +33,19 @@ class Proforma(App):
 		tp_panel.default_tab_text = "Login Tab"	
 		#*******TAB1*******	
 		th_tab1 = TabbedPanelHeader(text = 'Pro-Forma')
-		#*******LAYOUT-FOR-TAB1*******
-		layouttab1 = GridLayout(cols=2, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40)
+		#*******MAIN-LAYOUT-FOR-TAB1*******
+		mainlayout = GridLayout(cols=1)
+		#*******LAYOUT-FOR-PROPERTY-INFORMATION*******
+		layouttab1 = GridLayout(cols=2,rows=6, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40)
+		#*******LAYOUT-FOR-UNIT-MIX*******
+		layoutmix = GridLayout(cols=4, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40)
+		#*******LAYOUT-FOR-EXPENSES*******
+		layoutexpense = GridLayout(cols=2)
+		#*******LAYOUT-FOR-ACCOUNTS*******
+		
+		#*******CONTENT1*******
+		mainlayout.add_widget(Label(text='Property Information',size_hint_y=None, height=50))
+		#*******CONTENT2*******
 		layouttab1.add_widget(Label(text= 'Property Name', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
 		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
 		layouttab1.add_widget(Label(text= 'Property Address', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
@@ -47,8 +58,50 @@ class Proforma(App):
 		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
 		layouttab1.add_widget(Label(text= 'Square Footage', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
 		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
-		#*******CALLING-LAYOUTTAB1-IN-TAB1*******
-		th_tab1.content = layouttab1
+		mainlayout.add_widget(layouttab1)
+		#*******CONTENT3*******
+		mainlayout.add_widget(Label(text='Unit Mix',size_hint_x=None, width=200, size_hint_y=None, height=50))
+		#*******CONTENT4*******
+		layoutmix.add_widget(Label(text='# of Units'))
+		layoutmix.add_widget(Label(text='Unit Type'))
+		layoutmix.add_widget(Label(text='SquareFeet'))
+		layoutmix.add_widget(Label(text='Monthly Rent'))
+		layoutmix.add_widget(TextInput(text='Input', font_size=15))
+		layoutmix.add_widget(TextInput(text='Input', font_size=15))
+		layoutmix.add_widget(TextInput(text='Input', font_size=15))
+		layoutmix.add_widget(TextInput(text='Input', font_size=15))
+		mainlayout.add_widget(layoutmix)
+		#*******CONTENT5*******
+		mainlayout.add_widget(Label(text='Expenses',size_hint_x=None, width=200, size_hint_y=None, height=50))
+		#*******CONTENT6*******
+		layoutexpense.add_widget(Label(text='Accounting'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='Advertising'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='Bank Charges'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='Electricity'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='Gas'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='Security'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='All insurance'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='Permits and fees'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='Maintenance'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='Trash Pick-up'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(Label(text='All other'))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		mainlayout.add_widget(layoutexpense)
+		#*******CONTENT7*******
+		mainlayout.add_widget(Label(text='Accounts'))
+		#*******CONTENT7*******
+		#*******CALLING-MAINLAYOUT-IN-TAB1*******
+		th_tab1.content = mainlayout
 		
 		#___*******TAB2*******___#
 		th_tab2 = TabbedPanelHeader(text = 'Info. Tab')
