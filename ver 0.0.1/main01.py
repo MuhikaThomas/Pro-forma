@@ -11,10 +11,6 @@ from kivy.uix.dropdown import DropDown
 from kivy.uix.slider import Slider
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-from kivy.lang import Builder
-
-Builder.load_string("""
-""")
 
 class Proforma(App):
 	def operations(click):	
@@ -30,26 +26,40 @@ class Proforma(App):
 		layoutMid.size_hint = (1, 1)
 		
 	#*******CONTENT-OF-SUB-WIDGET-1*******	
-		menubtn = Button()
+		menubtn = Button(text='Menu')
 		menubtn.size_hint = (0.1, 0.1)
 		head = Label(text='PRO-FORMA',size_hint_y = None,size_hint_x=None, width=200)
 		head.size_hint = (0.8, 0.1)
-		backbtn = Button()
+		backbtn = Button(text='Drop')
 		backbtn.size_hint = (0.1, 0.1)
 		#dropbtn = Button()
 	#*******CONTENT-OF-SUB-WIDGET-2*******
 		tp_panel = TabbedPanel()
 		tp_panel.default_tab_text = "Global News"	
 		
+		layoutnews = GridLayout(rows=2)
+		upperlayout = GridLayout(cols=3, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40, size_hint_y=None, height = 50, size_hint_x=1)
+		lowerlayout = GridLayout(row=1)
+		
+		upperlayout.add_widget(Button(text='S', size_hint=(0.1, None)))
+		upperlayout.add_widget(TextInput(text='search', size_hint=(0.8, None), focus=True, multiline=False))
+		upperlayout.add_widget(Button(text='settings', size_hint=(0.1, None)))
+		
+		lowerlayout.add_widget(Label())
+		
+		layoutnews.add_widget(upperlayout)
+		layoutnews.add_widget(lowerlayout)
+		tp_panel.default_tab_content = layoutnews
+		
 		#*******TAB1*******	
 		th_tab1 = TabbedPanelHeader(text = 'Pro-Forma')
 		#*******SCROLLABILITY-WIDGET*******
 		scroll = ScrollView(size_hint=(1, None), size=(800, 1000))
 		
-		mainlayout = GridLayout(cols = 1, spacing = 10, size_hint_y=None)
+		mainlayout = GridLayout(cols = 1, spacing = 10, size_hint_y=None, size_hint_x=1)
 		mainlayout.bind(minimum_height=mainlayout.setter('height'))
 		#*******LAYOUT-FOR-PROPERTY-INFORMATION*******
-		layouttab1 = GridLayout(cols=2,rows=6, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40, size_hint_y=None, height = 250)
+		layouttab1 = GridLayout(cols=2,rows=6, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40, size_hint_y=None, height = 250, size_hint_x=1)
 		#*******LAYOUT-FOR-UNIT-MIX*******
 		layoutmix = GridLayout(cols=4, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40,size_hint_y=None, height = 80)
 		#*******LAYOUT-FOR-EXPENSES*******
@@ -57,12 +67,8 @@ class Proforma(App):
 		#*******LAYOUT-FOR-ACCOUNTS*******
 		layoutacc = GridLayout(cols=2, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40,size_hint_y=None, height = 240)
 		#*******CONTENT1*****
-		mainlayout.add_widget(Label(text='Property Information',size_hint_y=None, height=50))
+		mainlayout.add_widget(Label(text='Property Information',size_hint=(None, 1)))
 		#*******CONTENT2*******
-		drop = DropDown()
-		dropbtn = Button(text='Property info', size_hint=(None, None))
-		dropbtn.bind(on_release=drop.open)
-		drop.bind(on_select=lambda instance, x: setattr(dropbtn, 'text', x))
 		layouttab1.add_widget(Label(text= 'Property Name', font_size=15, size_hint=(0.4, None)))
 		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
 		layouttab1.add_widget(Label(text= 'Property Address', font_size=15, size_hint=(0.4, None)))
@@ -75,8 +81,7 @@ class Proforma(App):
 		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
 		layouttab1.add_widget(Label(text= 'Square Footage', font_size=15, size_hint=(0.4, None)))
 		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
-		drop.add_widget(layouttab1)
-		mainlayout.add_widget(drop)
+		mainlayout.add_widget(layouttab1)
 		#*******CONTENT3*******
 		mainlayout.add_widget(Label(text='Unit Mix',size_hint_x=None, width=200, size_hint_y=None, height=50))
 		#*******CONTENT4*******

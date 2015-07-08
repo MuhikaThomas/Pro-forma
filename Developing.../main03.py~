@@ -2,48 +2,57 @@ import kivy
 
 from kivy.app import App
 from kivy.uix.tabbedpanel import TabbedPanelHeader
+from kivy.core.image import Image as CoreImage
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
+from kivy.uix.dropdown import DropDown
 from kivy.uix.slider import Slider
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.lang import Builder
 
-Builder.load_string("""
-""")
-
 class Proforma(App):
 	def build(self):
-	#*******ROOTWIDGET*******
-		layout = GridLayout(rows=2)		
-	#*******SUB-WIDGETS*******
-		layoutTop = GridLayout(cols=3,rows=1)#SUB-WIDGET-1
-		layoutTop.size_hint = (1, 0.1)
-		layoutMid = GridLayout(cols=1, size_hint_x=1)#SUB-WIDGET-2
-	#*******CONTENT-OF-SUB-WIDGET-1*******	
+#*******THE-ROOT-WIDGET******
+		root = GridLayout(cols=1, rows=2, spacing=10)	
+#*******CHILDREN-OF-ROOT-WIDGET******
+		layouttop = GridLayout(cols=3, rows=1)
+		layouttop.size_hint = (1, 0.1)
+		layoutmid = GridLayout(cols=1, spacing=10)
+	#******CHILDREN-OF-LAYOUTTOP******
+		menubtn = Button()
+		menubtn.size_hint = (0.1, 0.1)
+		head = Label(text='PRO-FORMA',size_hint_y = None,size_hint_x=None, width=200)
+		head.size_hint = (0.8, 0.1)
 		backbtn = Button()
-		title = Label(text = 'Pro-Forma App', font_size = '20sp', pos = (0,300), size_hint_y = None,size_hint_x=None, width=200, halign ='right', valign='middle')
-		title.size_hint = (None, 0.1)
-		dropbtn = Button()
-	#*******CONTENT-OF-SUB-WIDGET-2*******
+		backbtn.size_hint = (0.1, 0.1)
+	#******CHILDREN-OF-LAYOUTMID******
 		tp_panel = TabbedPanel()
-		tp_panel.default_tab_text = "Login Tab"	
-		#*******TAB1*******	
-		th_tab1 = TabbedPanelHeader(text = 'Pro-Forma')
-		#*******MAIN-LAYOUT-FOR-TAB1*******
-		mainlayout = GridLayout(cols=1, spacing=10)
-		#*******LAYOUT-FOR-PROPERTY-INFORMATION*******
-		layouttab1 = GridLayout(cols=2,rows=6, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40)
-		#*******LAYOUT-FOR-UNIT-MIX*******
-		layoutmix = GridLayout(cols=4, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40)
-		#*******LAYOUT-FOR-EXPENSES*******
-		layoutexpense = GridLayout(cols=2)
-		#*******LAYOUT-FOR-ACCOUNTS*******
+		#___*******TAB1*****************************___#
+		th_tab1 = TabbedPanelHeader(text = 'Info. Tab')	
 		
-		#*******CONTENT1*******
+		layoutinfo = GridLayout(rows=2)
+		layoutinfo.add_widget(Label(text='Powered by kivy'))
+	#*******CALLING-SUB-WIDGETS-TAB2******	
+		th_tab1.content = layoutinfo
+		tp_panel.add_widget(th_tab1)
+		
+		#___*******TAB2*****************************___#
+		th_tab2 = TabbedPanelHeader(text = 'Pro-Forma')
+		#******children-of-tab1******
+		scroll = ScrollView(size_hint=(None, None), size=(800, 1000), pos_hint={'center_x':1,'center_y':1})
+		
+		mainlayout = GridLayout(cols = 1, spacing = 10, size_hint_y=None)
+		mainlayout.bind(minimum_height=mainlayout.setter('height'))
+			#children-of-main-layout
+		layouttab1 = GridLayout(cols=2, pos_hint ={'center_x': 1, 'center_y': 1},row_force_default=True, row_default_height=40, size_hint_y=None, height = 250)
+		layoutmix = GridLayout(cols=4, pos_hint ={'center_x': 1, 'center_y': 1},row_force_default=True, row_default_height=40 ,size_hint_y=None, height = 80)
+		layoutexpense = GridLayout(cols=2, pos_hint ={'center_x': 1, 'center_y': 1},row_force_default=True, row_default_height=40, size_hint_y=None, height = 1000)
+		layoutacc = GridLayout(cols=1, pos_hint ={'center_x': 1, 'center_y': 1},row_force_default=True, row_default_height=40, size_hint_y=None, height = 250)
+		#******CONTENT1*******
 		mainlayout.add_widget(Label(text='Property Information',size_hint_y=None, height=50))
 		#*******CONTENT2*******
 		layouttab1.add_widget(Label(text= 'Property Name', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
@@ -98,36 +107,30 @@ class Proforma(App):
 		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
 		mainlayout.add_widget(layoutexpense)
 		#*******CONTENT7*******
-		mainlayout.add_widget(Label(text='Accounts'))
-		#*******CONTENT7*******
-		#*******SCOLLABILITY*******
-		#*******CALLING-MAINLAYOUT-IN-TAB1*******
-		th_tab1.content = mainlayout
-		
-		#___*******TAB2*******___#
-		th_tab2 = TabbedPanelHeader(text = 'Info. Tab')
-	 	
-		#___*******TAB3*******___#
-		th_tab3 = TabbedPanelHeader(text = 'Due Deligence')
-		
-		#___*******TAB4*******___#
-		th_tab4 = TabbedPanelHeader(text = 'Saved Reports')
-		
-	#*******CALLING-TABS-TO-tp_panel*******
-		tp_panel.add_widget(th_tab1)
+		mainlayout.add_widget(Label(text='Accounts',size_hint_x=None, width=200, size_hint_y=None, height=50))	
+		#*******CONTENT8layoutacc
+		layoutacc.add_widget(Labek(text='Select your financing type'))
+		mainlayout.add_widget(layoutacc)
+	#*******CALLING-SUB-WIDGETS-TAB2******
+		scroll.add_widget(mainlayout)
+		th_tab2.content = scroll
 		tp_panel.add_widget(th_tab2)
+		
+		#___*******TAB3*******___#
+		th_tab3 = TabbedPanelHeader(text = 'Saved Reports')
+	#*******CALLING-SUB-WIDGETS-TAB3******
 		tp_panel.add_widget(th_tab3)
-		tp_panel.add_widget(th_tab4)	
-	#*******ADDING-CONTENTS-OF-SUB-WIDGETS*******
-		layoutTop.add_widget(backbtn)
-		layoutTop.add_widget(title)
-		layoutTop.add_widget(dropbtn)
-		layoutMid.add_widget(tp_panel)
-	#*******ADDING-CONTENTS-OF-ROOT-WIDGET*******
-		layout.add_widget(layoutTop)
-		layout.add_widget(layoutMid)
-	#*******CALLING-THE-ROOT-WIDGET*******	
-		return layout
-
+		
+#******CALLING-WIDGETS******
+		layouttop.add_widget(menubtn)
+		layouttop.add_widget(head)
+		layouttop.add_widget(backbtn)		
+		
+		layoutmid.add_widget(tp_panel)
+			
+		root.add_widget(layouttop)
+		root.add_widget(layoutmid)
+#******RETURN-ROOT******
+		return root		
 if __name__ == '__main__':
 	Proforma().run()

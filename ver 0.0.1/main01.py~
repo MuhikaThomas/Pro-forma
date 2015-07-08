@@ -2,7 +2,6 @@ import kivy
 
 from kivy.app import App
 from kivy.uix.tabbedpanel import TabbedPanelHeader
-from kivy.core.image import Image as CoreImage
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.scrollview import ScrollView
@@ -14,60 +13,70 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.lang import Builder
 
+Builder.load_string("""
+""")
+
 class Proforma(App):
+	def operations(click):	
+		pass
+		
 	def build(self):
-#*******THE-ROOT-WIDGET******
-		root = GridLayout(cols=1, rows=2, spacing=10)	
-#*******CHILDREN-OF-ROOT-WIDGET******
-		layouttop = GridLayout(cols=3, rows=1)
-		layouttop.size_hint = (1, 0.1)
-		layoutmid = GridLayout(cols=1, spacing=10)
-	#******CHILDREN-OF-LAYOUTTOP******
+	#*******ROOTWIDGET*******
+		layout = GridLayout(rows=2)		
+	#*******SUB-WIDGETS*******
+		layoutTop = GridLayout(cols=3,rows=1)#SUB-WIDGET-1
+		layoutTop.size_hint = (1, 0.1)
+		layoutMid = FloatLayout()#SUB-WIDGET-2
+		layoutMid.size_hint = (1, 1)
+		
+	#*******CONTENT-OF-SUB-WIDGET-1*******	
 		menubtn = Button()
 		menubtn.size_hint = (0.1, 0.1)
 		head = Label(text='PRO-FORMA',size_hint_y = None,size_hint_x=None, width=200)
 		head.size_hint = (0.8, 0.1)
 		backbtn = Button()
 		backbtn.size_hint = (0.1, 0.1)
-	#******CHILDREN-OF-LAYOUTMID******
+		#dropbtn = Button()
+	#*******CONTENT-OF-SUB-WIDGET-2*******
 		tp_panel = TabbedPanel()
-		#___*******TAB1*****************************___#
-		th_tab1 = TabbedPanelHeader(text = 'Info. Tab')	
+		tp_panel.default_tab_text = "Global News"	
 		
-		layoutinfo = GridLayout(rows=2)
-		layoutinfo.add_widget(Label(text='Powered by kivy'))
-	#*******CALLING-SUB-WIDGETS-TAB2******	
-		th_tab1.content = layoutinfo
-		tp_panel.add_widget(th_tab1)
-		
-		#___*******TAB2*****************************___#
-		th_tab2 = TabbedPanelHeader(text = 'Pro-Forma')
-		#******children-of-tab1******
-		scroll = ScrollView(size_hint=(None, None), size=(800, 1000), pos_hint={'center_x':1,'center_y':1})
+		#*******TAB1*******	
+		th_tab1 = TabbedPanelHeader(text = 'Pro-Forma')
+		#*******SCROLLABILITY-WIDGET*******
+		scroll = ScrollView(size_hint=(1, None), size=(800, 1000))
 		
 		mainlayout = GridLayout(cols = 1, spacing = 10, size_hint_y=None)
 		mainlayout.bind(minimum_height=mainlayout.setter('height'))
-			#children-of-main-layout
-		layouttab1 = GridLayout(cols=2, pos_hint ={'center_x': 1, 'center_y': 1},row_force_default=True, row_default_height=40, size_hint_y=None, height = 250)
-		layoutmix = GridLayout(cols=4, pos_hint ={'center_x': 1, 'center_y': 1},row_force_default=True, row_default_height=40 ,size_hint_y=None, height = 80)
-		layoutexpense = GridLayout(cols=2, pos_hint ={'center_x': 1, 'center_y': 1},row_force_default=True, row_default_height=40, size_hint_y=None, height = 1000)
-		
-		#******CONTENT1*******
+		#*******LAYOUT-FOR-PROPERTY-INFORMATION*******
+		layouttab1 = GridLayout(cols=2,rows=6, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40, size_hint_y=None, height = 250)
+		#*******LAYOUT-FOR-UNIT-MIX*******
+		layoutmix = GridLayout(cols=4, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40,size_hint_y=None, height = 80)
+		#*******LAYOUT-FOR-EXPENSES*******
+		layoutexpense = GridLayout(cols=2, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40, size_hint_y=None, height = 960)
+		#*******LAYOUT-FOR-ACCOUNTS*******
+		layoutacc = GridLayout(cols=2, pos_hint ={'center_x': .5, 'center_y': .5},row_force_default=True, row_default_height=40,size_hint_y=None, height = 240)
+		#*******CONTENT1*****
 		mainlayout.add_widget(Label(text='Property Information',size_hint_y=None, height=50))
 		#*******CONTENT2*******
-		layouttab1.add_widget(Label(text= 'Property Name', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
-		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
-		layouttab1.add_widget(Label(text= 'Property Address', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
-		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
-		layouttab1.add_widget(Label(text= 'Town/City', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
-		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
-		layouttab1.add_widget(Label(text= 'Asking Price', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
-		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
-		layouttab1.add_widget(Label(text= 'Total Units', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
-		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
-		layouttab1.add_widget(Label(text= 'Square Footage', size_hint_x=None, width=200,size_hint_y=None, height=50, font_size='20sp'))
-		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle'))
-		mainlayout.add_widget(layouttab1)
+		drop = DropDown()
+		dropbtn = Button(text='Property info', size_hint=(None, None))
+		dropbtn.bind(on_release=drop.open)
+		drop.bind(on_select=lambda instance, x: setattr(dropbtn, 'text', x))
+		layouttab1.add_widget(Label(text= 'Property Name', font_size=15, size_hint=(0.4, None)))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
+		layouttab1.add_widget(Label(text= 'Property Address', font_size=15, size_hint=(0.4, None)))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
+		layouttab1.add_widget(Label(text= 'Town/City', font_size=15, size_hint=(0.4, None)))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
+		layouttab1.add_widget(Label(text= 'Asking Price', font_size=15, size_hint=(0.4, None)))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
+		layouttab1.add_widget(Label(text= 'Total Units', font_size=15, size_hint=(0.4, None)))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
+		layouttab1.add_widget(Label(text= 'Square Footage', font_size=15, size_hint=(0.4, None)))
+		layouttab1.add_widget(TextInput(text='input', font_size=15, halign ='left', valign='middle',size_hint=(0.6, None),multiline=False, focus=True))
+		drop.add_widget(layouttab1)
+		mainlayout.add_widget(drop)
 		#*******CONTENT3*******
 		mainlayout.add_widget(Label(text='Unit Mix',size_hint_x=None, width=200, size_hint_y=None, height=50))
 		#*******CONTENT4*******
@@ -80,11 +89,27 @@ class Proforma(App):
 		layoutmix.add_widget(TextInput(text='Input', font_size=15))
 		layoutmix.add_widget(TextInput(text='Input', font_size=15))
 		mainlayout.add_widget(layoutmix)
+		#*******CONTENT7*******
+		mainlayout.add_widget(Label(text='Accounts',size_hint_x=None, width=200, size_hint_y=None, height=50))
+		#*******CONTENT7*******
+		layoutacc.add_widget(Label(text='Purchase Price'))
+		layoutacc.add_widget(TextInput(text='Input'))
+		layoutacc.add_widget(Label(text='Deposit'))
+		layoutacc.add_widget(TextInput(text='Input'))
+		layoutacc.add_widget(Label(text='Loan Amount'))
+		layoutacc.add_widget(TextInput(text='Input'))
+		layoutacc.add_widget(Label(text='Annual Interest'))
+		layoutacc.add_widget(TextInput(text='Input'))
+		layoutacc.add_widget(Label(text='Period'))
+		layoutacc.add_widget(TextInput(text='Input'))
+		layoutacc.add_widget(Label(text='Total Cash Outlay'))
+		layoutacc.add_widget(TextInput(text='Input'))
+		mainlayout.add_widget(layoutacc)
 		#*******CONTENT5*******
 		mainlayout.add_widget(Label(text='Expenses',size_hint_x=None, width=200, size_hint_y=None, height=50))
 		#*******CONTENT6*******
 		layoutexpense.add_widget(Label(text='Accounting'))
-		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
+		layoutexpense.add_widget(TextInput(text='Input', font_size=15,))
 		layoutexpense.add_widget(Label(text='Advertising'))
 		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
 		layoutexpense.add_widget(Label(text='Bank Charges'))
@@ -106,28 +131,25 @@ class Proforma(App):
 		layoutexpense.add_widget(Label(text='All other'))
 		layoutexpense.add_widget(TextInput(text='Input', font_size=15))
 		mainlayout.add_widget(layoutexpense)
-		#*******CONTENT7*******
-		mainlayout.add_widget(Label(text='Accounts',size_hint_x=None, width=200, size_hint_y=None, height=50))	
-	#*******CALLING-SUB-WIDGETS-TAB2******
+		#*******CALLING-MAINLAYOUT-IN-TAB1*******
 		scroll.add_widget(mainlayout)
-		th_tab2.content = scroll
-		tp_panel.add_widget(th_tab2)
+		th_tab1.content = scroll
+		tp_panel.add_widget(th_tab1)
 		
 		#___*******TAB3*******___#
 		th_tab3 = TabbedPanelHeader(text = 'Saved Reports')
-	#*******CALLING-SUB-WIDGETS-TAB3******
 		tp_panel.add_widget(th_tab3)
-		
-#******CALLING-WIDGETS******
-		layouttop.add_widget(menubtn)
-		layouttop.add_widget(head)
-		layouttop.add_widget(backbtn)		
-		
-		layoutmid.add_widget(tp_panel)
-			
-		root.add_widget(layouttop)
-		root.add_widget(layoutmid)
-#******RETURN-ROOT******
-		return root		
+	
+	#*******ADDING-CONTENTS-OF-SUB-WIDGETS*******
+		layoutTop.add_widget(menubtn)
+		layoutTop.add_widget(head)
+		layoutTop.add_widget(backbtn)
+		layoutMid.add_widget(tp_panel)
+	#*******ADDING-CONTENTS-OF-ROOT-WIDGET*******
+		layout.add_widget(layoutTop)
+		layout.add_widget(layoutMid)
+	#*******CALLING-THE-ROOT-WIDGET*******	
+		return layout
+
 if __name__ == '__main__':
 	Proforma().run()
