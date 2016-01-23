@@ -8,6 +8,5 @@ LANGUAGE
 	Python	
 FRAMEWORK
 	Kivy
-DEVELOPER
-	Muhika Thomas
+
 
